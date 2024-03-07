@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks.Dataflow;
-
 class Program
 {
     static void Main(string[] args)
@@ -19,7 +18,6 @@ class Program
  
         job1.DisplayJobDetails();
         job2.DisplayJobDetails();
-
 
         Resume newResume = new Resume();
         newResume.name = "Allison Rose";
