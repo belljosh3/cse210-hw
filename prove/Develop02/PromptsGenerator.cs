@@ -21,9 +21,4 @@ public class PromptsGenerator {
         
         return _prompts[promptNumber];
     }
-    // public void DisplayPrompts() {
-    //     foreach (string prompt in _prompts) {
-    //         Console.WriteLine($"{prompt}");
-    //     }
-    // }
 }

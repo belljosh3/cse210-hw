@@ -6,6 +6,8 @@ class Program
     {
         //loop to keep asking what the user wants to do
         //displays 5 options: write, display, load, save, quit
+        Entry newEntry = new Entry();
+        PromptsGenerator prompt = new PromptsGenerator();
         int selection;
         do {
             Console.WriteLine("Please select one of the following choices:\n1. Write\n2. Display\n3. Load\n4. Save\n5. Quit");
@@ -13,9 +15,11 @@ class Program
             selection = int.Parse(Console.ReadLine());
             if (selection == 1)
             {   
-                Console.WriteLine($"{Entry._date}");
-                // PromptsGenerator newPrompt = new PromptsGenerator();
-                // newPrompt.DisplayPrompts();
+                newEntry._promptText = prompt.RandomPrompt();
+                Console.WriteLine($"{newEntry._promptText}");
+                Console.Write("> ");
+                newEntry._entryText = Console.ReadLine();
+                newEntry._date = DateTime.Now;
             }
             else if (selection == 2)
             {
