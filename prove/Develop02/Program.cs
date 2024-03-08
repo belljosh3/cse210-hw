@@ -6,6 +6,7 @@ class Program
     {
         //loop to keep asking what the user wants to do
         //displays 5 options: write, display, load, save, quit
+        Journal journal = new Journal();
         Entry newEntry = new Entry();
         PromptsGenerator prompt = new PromptsGenerator();
         int selection;
@@ -23,7 +24,7 @@ class Program
             }
             else if (selection == 2)
             {
-
+                journal.DisplayEntries();
             }
             else if (selection == 3)
             {

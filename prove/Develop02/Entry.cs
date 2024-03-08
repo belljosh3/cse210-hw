@@ -10,7 +10,4 @@ public class Entry {
         _promptText = generator.RandomPrompt();
     }
 
-    public string FormattedEntry() {
-        return $"{_date.ToString("M/d/yyyy")} - {_promptText} {_entryText}";
-    }
 }
