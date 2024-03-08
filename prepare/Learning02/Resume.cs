@@ -1,3 +1,5 @@
+using System;
+
 public class Resume {
     //responsibilities: keeps track of person's name and a list of their jobs
     public string _name;

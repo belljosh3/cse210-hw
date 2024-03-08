@@ -1,3 +1,5 @@
+using System;
+
 public class Job {
     //responsibilities: keeps track of company, job title, start year, end year
     public string _company;
