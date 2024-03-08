@@ -21,6 +21,7 @@ class Program
                 Console.Write("> ");
                 newEntry._entryText = Console.ReadLine();
                 newEntry._date = DateTime.Now;
+                journal.AddEntry(newEntry);
             }
             else if (selection == 2)
             {
