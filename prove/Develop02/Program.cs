@@ -44,7 +44,7 @@ class Program
             {
                 Console.Write("Prompt: ");
                 newEntry._promptText = Console.ReadLine();
-                Console.Write("> ");
+                Console.Write("Entry > ");
                 newEntry._entryText = Console.ReadLine();
                 newEntry._date = DateTime.Now;
                 journal.AddEntry(newEntry);
