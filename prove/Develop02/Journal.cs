@@ -6,7 +6,7 @@ public class Journal{
    public List<string> _entries = new List<string>(); 
 
   public void AddEntry(Entry newEntry) {
-      string formattedEntry = $"{newEntry._date.ToString("M/d/yyyy")} - Prompt: {newEntry._promptText}\n{newEntry._entryText}\n\n";
+      string formattedEntry = $"{newEntry._date.ToString("MM/dd/yyyy")} - Prompt: {newEntry._promptText}\n{newEntry._entryText}\n\n";
       _entries.Add(formattedEntry);
    }  
 
