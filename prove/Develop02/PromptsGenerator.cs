@@ -11,7 +11,6 @@ public class PromptsGenerator {
     _prompts.Add("What is one thing if you could over today, you would do differently?");
     _prompts.Add("What are you grateful for today?");
     _prompts.Add("What was the most surprising thing that happend today?");
-
     }
 
     //randomly generate a number to display a different prompt

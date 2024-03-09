@@ -28,12 +28,16 @@ class Program
                 journal.DisplayEntries();
             }
             else if (selection == 3)
-            {
-
+            {   
+                Console.WriteLine("What is the filename?");
+                string fileName = Console.ReadLine();
+                journal.LoadFromFile(fileName);
             }
             else if (selection == 4)
             {
-
+                Console.WriteLine("What is the filename?");
+                string fileName = Console.ReadLine();
+                journal.SaveToFile(fileName);
             }
         } while (selection != 5); 
     }

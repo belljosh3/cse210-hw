@@ -9,5 +9,4 @@ public class Entry {
         PromptsGenerator generator = new PromptsGenerator();
         _promptText = generator.RandomPrompt();
     }
-
 }
