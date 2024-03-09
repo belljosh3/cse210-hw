@@ -9,9 +9,10 @@ class Program
         Journal journal = new Journal();
         Entry newEntry = new Entry();
         PromptsGenerator prompt = new PromptsGenerator();
+
         int selection;
         do {
-            Console.WriteLine("Please select one of the following choices:\n1. Write\n2. Display\n3. Load\n4. Save\n5. Quit");
+            Console.WriteLine("Please select one of the following choices:\n1. Write\n2. Display\n3. Load\n4. Save\n5. Quit\n6. Custom Prompt");
             Console.Write("What would you like to do? ");
             selection = int.Parse(Console.ReadLine());
             if (selection == 1)
@@ -38,6 +39,15 @@ class Program
                 Console.WriteLine("What is the filename?");
                 string fileName = Console.ReadLine();
                 journal.SaveToFile(fileName);
+            }
+            else if (selection == 6)
+            {
+                Console.Write("Prompt: ");
+                newEntry._promptText = Console.ReadLine();
+                Console.Write("> ");
+                newEntry._entryText = Console.ReadLine();
+                newEntry._date = DateTime.Now;
+                journal.AddEntry(newEntry);
             }
         } while (selection != 5); 
     }
