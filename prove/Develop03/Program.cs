@@ -46,13 +46,8 @@ class Program
                 int end = int.Parse(ending);
                 reference = new Reference(book, chapter, verse, end);
             }
-            Console.WriteLine("Would you like to save this scripture to a file (yes/no)?");
-            Console.Write("> ");
-            string saveScripture = Console.ReadLine();
-            if (saveScripture == "yes"){
-                Scripture saveFile = new Scripture();
-                saveFile.SaveToFile(reference, text);
-            }
+            Scripture saveFile = new Scripture();
+            saveFile.SaveToFile(reference, text);
         } else if (choice == 4){
             Scripture loadFile = new Scripture();
             string[] line = loadFile.LoadFromFile();
