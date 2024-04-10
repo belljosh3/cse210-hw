@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using System.Net.Http.Headers;
+using System.Net.Mail;
 
 public class Menu
 {
@@ -21,7 +22,7 @@ public class Menu
 
         do {
             Console.Clear();
-            Console.WriteLine("Please select from the following:\n 1. Input Registers\n 2. View Report\n 3. Save Report\n 4. Quit");
+            Console.WriteLine("Please select from the following:\n 1. Input Registers\n 2. View Report\n 3. Quit");
             Console.Write(">> ");
             choice = int.Parse(Console.ReadLine());
 
@@ -37,47 +38,56 @@ public class Menu
                     {
                         Console.Clear();
                         //call on registers class to add to register manager list
-                        string another = "yes";
-
+                        
                         target.SetTarget();
+                        registers.RegisterAddLoop();
 
-                        while (another != "no")
+                        Console.Clear();
+                        Console.Write("Generating Report");
+                        ShowDots(4);
+
+                        report.DisplayReport(registers, target);
+                        //delay 7s
+                        ShowDots(7);
+                        
+                        Console.Write("\n\nWould you like to see a detailed report of this (yes/no)? ");
+                        string detailChoice = Console.ReadLine();
+                        
+                        if (detailChoice == "yes")
                         {
-                            Register register = new Register();
-                            registers.AddRegister(register);
-                            Console.Clear();
-                            Console.Write("Would you like to add another (yes/no)? ");
-                            another = Console.ReadLine();
+                            detailed.DisplayReport(registers, target);
                         }
+
+                        Console.Clear();
+                        Console.Write("Saving today's report");
+                        ShowDots(10);
+
+                        string date = DateTime.Today.ToString("MM-dd-yyyy");
+                        save.SaveReportFile(date, registers.GetTotal(), target.GetTarget(), registers.GetRegisters());
+
                     } else if (dChoice == 2)
                     {
                         Console.Clear();
+                        registers.Reset();
                         Console.Write("Please enter the date of the missed report (MM-DD-YYYY): ");
                         string dateString = Console.ReadLine();
-                        
                         
                         missed.SetDate(dateString);
                         target.SetTarget();
 
-                        string another = "yes";
-                        while (another != "no")
-                        {
-                            Register register = new Register();
-                            registers.AddRegister(register);
-                            Console.Clear();
-                            Console.Write("Would you like to add another (yes/no)? ");
-                            another = Console.ReadLine();
-                        }
+                        registers.RegisterAddLoop();
 
+                        Console.Clear();
                         Console.Write("Automatically Generating report");
                         ShowDots(5);
                         missed.DisplayReport(registers, target);
                         
-                        Console.WriteLine("\n\nWould you like to save this report (yes/no)? ");
+                        Console.Write("\n\nWould you like to save this report (yes/no)? ");
                         string saveReport = Console.ReadLine();
 
                         if (saveReport == "yes")
                         {
+                            Console.Clear();
                             Console.Write($"Saving the report for {dateString}");
                             ShowDots(10);
                             save.SaveReportFile(dateString, registers.GetTotal(), target.GetTarget(), registers.GetRegisters());
@@ -89,49 +99,34 @@ public class Menu
                 case 2:
                 {
                     Console.Clear();
-                    Console.WriteLine("Please select one of the following:\n 1. Current day's report\n 2. Previous report");
+                    Console.WriteLine("Please select one of the following:\n 1. Current day's report\n 2. Previously saved report");
                     Console.Write(">> ");
                     int rChoice = int.Parse(Console.ReadLine());
                     
                     if (rChoice == 1)
-                    {
-                        report.DisplayReport(registers, target);
-                            //delay 10s
-                            ShowDots(10);
-                        
-                        Console.Write("\n\nWould you like to see a detailed report of this (yes/no)? ");
-                        string dChoice = Console.ReadLine();
-                        
-                        if (dChoice == "yes")
-                        {
-                            detailed.DisplayReport(registers, target);
-                            Console.WriteLine("\nPress ENTER to go back to the Main Menu.");
-                            Console.ReadLine();
-                        }
+                    {   
+                        string date = DateTime.Today.ToString("MM-dd-yyyy");
+                        Console.Clear();
+                        Console.Write("Generating Report");
+                        ShowDots(7);
+                        save.LoadReportFile(date);
 
                     } else if (rChoice == 2)
                     {
+                        registers.Reset();
+                        Console.Clear();
                         Console.Write("Enter the date of the report you want to view (MM-DD-YYYY): ");
                         string date = Console.ReadLine();
+                        Console.Clear();
+                        Console.Write("Generating Report");
+                        ShowDots(7);
                         save.LoadReportFile(date);
                     }
                     break;
 
                 }
-                case 3:
-                {
-
-                    Console.Clear();
-                    Console.Write("Saving today's report");
-                    ShowDots(10);
-
-                    string date = DateTime.Today.ToString("MM-dd-yyyy");
-                    save.SaveReportFile(date, registers.GetTotal(), target.GetTarget(), registers.GetRegisters());
-                    
-                    break;
-                }
             }
-        } while (choice != 4);    
+        } while (choice != 3);    
     }
     private void ShowDots(int seconds)
     {

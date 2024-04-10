@@ -1,3 +1,5 @@
+using System.Resources;
+
 public class RegisterManager
 {
     protected List<Register> _registers;
@@ -11,8 +13,24 @@ public class RegisterManager
     {
         _registers.Add(register);
         Console.WriteLine("\nRegister added");
+        Thread.Sleep(1000);
     }
 
+    public void RegisterAddLoop()
+    {
+        string another = "yes";
+        int regNumber = 1;
+        while (another != "no")
+        {
+            Console.WriteLine($"Register #{regNumber}");
+            Register register = new Register();
+            AddRegister(register);
+            Console.Clear();
+            Console.Write("Would you like to add another (yes/no)? ");
+            another = Console.ReadLine();
+            regNumber++;
+        }
+    }
     public void CalculateTotal()
     {
         _total = 0;
@@ -33,7 +51,7 @@ public class RegisterManager
 
     public double GetTotal()
     {
-        return _total;
+        return Math.Round(_total,2);
     }
 
     public void SetTotal(double total)
@@ -49,5 +67,10 @@ public class RegisterManager
     public List<Register> GetRegisters()
     {
         return _registers;
+    }
+    public void Reset()
+    {
+        _registers.Clear();
+        _total = 0;
     }
 }

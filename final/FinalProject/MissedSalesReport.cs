@@ -16,7 +16,7 @@ public class MissedSalesReport : SalesReport
 
         Console.Clear();
         Console.WriteLine($"{_date}");
-        Console.WriteLine($"\nProfit: ${profit}");
+        Console.WriteLine($"\nProfit: ${Math.Round(profit,2)}");
         Console.WriteLine($"Target: ${target.GetTarget()}");
 
         Console.WriteLine($"\n{registers.Count()} registers brought in ${registers.GetTotal()} total.");

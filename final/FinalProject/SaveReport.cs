@@ -14,7 +14,9 @@ public class SaveReport
             }
         }
         
-        Console.WriteLine($"\nReport Saved \"{date}-SalesReport.txt\"");
+        Console.WriteLine($"\nReport Saved \"{date}-SalesReport.txt\".\n\nPress ENTER to continue");
+        Console.ReadLine();
+    
     }
 
     public void LoadReportFile(string date)
@@ -32,7 +34,7 @@ public class SaveReport
         string targetLine = lines[2];
         double target = double.Parse(targetLine.Split(":")[1].Trim());
         double profit = totalNum - target;
-        Console.WriteLine($"\nProfit: ${profit}");
+        Console.WriteLine($"\nProfit: ${Math.Round(profit,2)}");
         Console.WriteLine($"Target: ${target}");
 
         int regNum = 0;
@@ -42,6 +44,9 @@ public class SaveReport
             Console.WriteLine(line);
         }
         Console.WriteLine($"\n{regNum} registers brought in ${totalNum} total.");
+
+        Console.WriteLine("\nPress ENTER to go back to the Main Menu.");
+        Console.ReadLine();
 
     }
 }

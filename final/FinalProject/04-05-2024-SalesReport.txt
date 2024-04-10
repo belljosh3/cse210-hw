@@ -1,0 +1,4 @@
+Date: 04-05-2024
+Total: 2085.22
+Target: 520
+Hundreds: 9, Fifties: 5, Twenties: 40, Tens: 9, Fives: 7, Ones: 8, Quarters: 6, Dimes: 5, Nickels: 4, Pennies: 2

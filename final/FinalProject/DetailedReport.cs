@@ -11,5 +11,7 @@ public class DetailedReport : SalesReport
             regNum++;
             Console.WriteLine($"Register#{regNum} - Hundreds: {register.GetHundreds()}, Fifties: {register.GetFifties()}, Twenties: {register.GetTwenties()}, Tens: {register.GetTens()}, Fives: {register.GetFives()}, Ones: {register.GetOnes()}, Quarters: {register.GetQuarters()}, Dimes: {register.GetDimes()}, Nickels: {register.GetNickels()}, Pennies: {register.GetPennies()}");
         }
+        Console.WriteLine("\nPress ENTER to go back to continue.");
+        Console.ReadLine();
     }
 }

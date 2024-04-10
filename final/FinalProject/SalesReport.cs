@@ -11,7 +11,7 @@ public class SalesReport
 
         Console.Clear();
         Console.WriteLine($"{date}");
-        Console.WriteLine($"\nProfit: ${profit}");
+        Console.WriteLine($"\nProfit: ${Math.Round(profit,2)}");
         Console.WriteLine($"Target: ${target.GetTarget()}");
 
         Console.WriteLine($"\n{registers.Count()} registers brought in ${registers.GetTotal()} total.");
